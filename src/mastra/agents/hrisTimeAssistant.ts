@@ -26,7 +26,7 @@ a contract ID, ask for it before attempting to retrieve data.`;
 
 // Create the HRIS Time Assistant agent
 export const hrisTimeAssistant = new Agent({
-  name: "hris-time-assistant",
+  name: "hrisTimeAssistant",
   instructions: systemPrompt,
   model: openai("gpt-4o"),
   memory: new Memory(),

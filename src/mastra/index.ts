@@ -3,7 +3,7 @@ import { hrisTimeAssistant } from "./agents/hrisTimeAssistant";
 
 export const mastra = new Mastra({
   agents: {
-    hrisTimeAssistant: hrisTimeAssistant,
+    hrisTimeAssistant,
   },
   server: {
     cors: {
