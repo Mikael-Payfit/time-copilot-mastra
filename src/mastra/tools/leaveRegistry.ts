@@ -31,7 +31,6 @@ const leaveRegistryService = new LeaveRegistryService();
 export const getLeaveRegistryTool = createTool({
   id: "get-leaves-registry",
   description: `
-    Tool Description
 A specialized tool that fetches employee absence-related events using a contract ID and generates a comprehensive event aggregate datamodel. 
 The tool processes various event types from the leave management system and constructs a complete historical view of an employee's absences.
 
