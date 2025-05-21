@@ -1,5 +1,13 @@
+import { Mastra } from "@mastra/core";
+import { hrisTimeAssistant } from "./agents/hrisTimeAssistant";
 
-import { Mastra } from '@mastra/core';
-
-export const mastra = new Mastra()
-        
+export const mastra = new Mastra({
+  agents: {
+    hrisTimeAssistant: hrisTimeAssistant,
+  },
+  server: {
+    cors: {
+      origin: "*",
+    },
+  },
+});
