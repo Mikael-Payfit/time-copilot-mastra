@@ -35,7 +35,7 @@ class CalendarRecordService {
 // Create a singleton instance of the service
 const calendarRecordService = new CalendarRecordService();
 
-export const getLeaveRegistryTool = createTool({
+export const getCalendarRecordsTool = createTool({
   id: "get-calendar-records",
   description: `
     This tool retrieves employee calendars by querying an API with a contract number and a date period. The tool automatically segments the provided period into weekly requests, making an API call for each Monday at midnight within the requested period.
