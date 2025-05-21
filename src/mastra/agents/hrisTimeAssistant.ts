@@ -70,7 +70,7 @@ export const hrisTimeAssistant = new Agent({
   memory: new Memory(),
   tools: {
     getLeaveRegistry: getLeaveRegistryTool,
-    // getCalendarRecords: getCalendarRecordsTool,
-    getLeaveBalanceSimulation: getLeaveBalanceSimulationTool,
+    getCalendarRecords: getCalendarRecordsTool,
+    getLeaveBalanceSimulation: getLeaveBalanceSimulationTool
   },
 });
