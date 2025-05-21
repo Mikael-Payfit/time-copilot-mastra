@@ -3,6 +3,7 @@ import { openai } from "@ai-sdk/openai";
 import { getLeaveRegistryTool } from "../tools/leaveRegistry";
 import { Memory } from "@mastra/memory";
 import { getCalendarRecordsTool } from "../tools/calendar";
+import { getLeaveBalanceSimulationTool } from "../tools/leaveBalanceSimulation";
 
 // Define the agent instructions
 const systemPrompt = `You are MyPayFit, an assistant dedicated to helping clients manage leaves and employee time within PayFit. 
@@ -11,9 +12,14 @@ Your role is to guide HR managers and employees step by step through leave manag
 You have the following capabilities in your tools:
 1. Retrieve leave history for employees via their leave registry.
 2. Retrieve employee calendars.
+3. Simulate future leave balances for specific leave types ("fr_conges_payes" or "fr_rtt").
 IMPORTANT: You need a valid contract ID to retrieve employee leave information or calendar information. If the user hasn't provided 
 a contract ID, ask for it before attempting to retrieve data.
 
+When simulating future leave balances:
+- You can only simulate "fr_conges_payes" (paid leave) or "fr_rtt" (reduced working time) types
+- You need to specify which months to simulate in YYYY-MM format
+- The simulation will show projected balance and any potential lost days for each month
 
 When you have multiple items to display in your response, use a standard markdown format. Especially when you display a list, make it a markdown table.
 
@@ -60,10 +66,11 @@ Offer your help for other related action and remain available to answer question
 export const hrisTimeAssistant = new Agent({
   name: "hrisTimeAssistant",
   instructions: systemPrompt,
-  model: openai("gpt-4o-mini"),
+  model: openai("gpt-4.1-mini"),
   memory: new Memory(),
   tools: {
     getLeaveRegistry: getLeaveRegistryTool,
     // getCalendarRecords: getCalendarRecordsTool,
+    getLeaveBalanceSimulation: getLeaveBalanceSimulationTool,
   },
 });
