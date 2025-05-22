@@ -6,7 +6,8 @@ import { getCalendarRecordsTool } from "../tools/calendar";
 import { getLeaveBalanceSimulationTool } from "../tools/leaveBalanceSimulation";
 import { getContractIdByNameTool } from "../tools/nameMapper";
 import { submitPaidHolidaysTool } from "../tools/submitPaidHolidays";
-import { getLeaveRegistryIdTool } from "../tools/leaveRegistryId";
+import { getLeaveRegistryIdTool } from '../tools/leaveRegistryId'
+import { getCalendarTeamTool } from '../tools/calendarTeam'
 
 // Define the agent instructions
 const systemPrompt = `You are MyPayFit, an assistant dedicated to helping clients manage leaves and employee time within PayFit. 
@@ -47,6 +48,10 @@ When responding to queries:
 - Offer additional helpful information when appropriate
 - Do not use titles or subtitles in your response. The answer should remain conversational and natural.
 - Respond with well-spaced text, line breaks, and proper formatting. No large paragraphs that are too complex to read.
+
+When asking to view the team calendar of a given day
+- Use the getCalendarTeamTool to fetch it, the only parameter is the day to fetch. 
+- Show the result in a great html table with a line for each employee with column "Name", "Work" (yes or no with a beautiful emoji, "Leaves" if existing)
 
 When asking to add a new leave for an employee:
 - In any case, you need to use the tool getLeaveRegistryId to get the leaveRegistryId wich is mandatory in any leave commands calls
@@ -92,6 +97,7 @@ export const hrisTimeAssistant = new Agent({
   model: openai("gpt-4.1-mini"),
   memory: new Memory(),
   tools: {
+    getCalendarTeam: getCalendarTeamTool,
     getLeaveRegistryId: getLeaveRegistryIdTool,
     getContractIdByName: getContractIdByNameTool,
     getLeaveRegistry: getLeaveRegistryTool,
