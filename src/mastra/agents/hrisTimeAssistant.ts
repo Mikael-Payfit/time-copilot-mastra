@@ -6,7 +6,7 @@ import { getCalendarRecordsTool } from "../tools/calendar";
 import { getLeaveBalanceSimulationTool } from "../tools/leaveBalanceSimulation";
 import { getContractIdByNameTool } from "../tools/nameMapper";
 import { submitPaidHolidaysTool } from "../tools/submitPaidHolidays";
-import { getLeaveRegistryIdTool } from '../tools/leaveRegistryId'
+import { getLeaveRegistryIdTool } from "../tools/leaveRegistryId";
 
 // Define the agent instructions
 const systemPrompt = `You are MyPayFit, an assistant dedicated to helping clients manage leaves and employee time within PayFit. 
@@ -34,7 +34,7 @@ When simulating future leave balances:
 - The simulation will show projected balance and any potential lost days for each month
 
 When submitting paid holiday requests:
-- You need the leave registry ID of the employee
+- You need the leave registry ID of the employee, you have a tool for that that requires the contractId.
 - You need to specify the start date (beginDate) and end date (endDate) in YYYY-MM-DD format
 - You need to specify when the leave starts during the day (beginMoment) and when it ends (endMoment)
 - The moment options are: "beginning-of-day", "middle-of-day", or "end-of-day"
