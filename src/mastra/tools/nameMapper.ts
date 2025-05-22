@@ -15,8 +15,14 @@ export const getContractIdByNameTool = createTool({
     realName: z.string().or(z.undefined()).describe("The real name of the employee as specified in the contract"),
   }),
   execute: async ({ context }) => {
-    if (context.name.toLowerCase().indexOf('female') !== -1 || context.name.toLowerCase().indexOf('test') !== -1) {
-      return { contractId: '65e590f1173411001bde34d5', realName: 'Female Test' }
+    if (context.name.toLowerCase().indexOf('nigel') !== -1 || context.name.toLowerCase().indexOf('clockingtom') !== -1) {
+      return { contractId: '682f2d71907d1647b52e4179', realName: 'Nigel Clockington' }
+    }
+    if (context.name.toLowerCase().indexOf('benedic') !== -1 || context.name.toLowerCase().indexOf('timebottom') !== -1) {
+      return { contractId: '682f2e8590ecf695ae96f51e', realName: 'Benedic Timebottom' }
+    }
+    if (context.name.toLowerCase().indexOf('agatha') !== -1 || context.name.toLowerCase().indexOf('clockberry') !== -1) {
+      return { contractId: '682f2b9790ecf695ae96f4e7', realName: 'Agatha Clockberry' }
     }
     return { contractId: undefined, realName: undefined }
   },

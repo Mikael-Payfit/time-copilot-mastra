@@ -9,7 +9,7 @@ class CalendarRecordService {
     try {
       // Fetch leave data from the API using POST with body
       const response = await fetch(
-        `${this.baseUrl}/api/workschedule/calendar/}`,
+        `${this.baseUrl}/api/workschedule/calendar/`,
         {
           method: 'POST',
           headers: {
@@ -26,7 +26,7 @@ class CalendarRecordService {
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error("Error fetching leave registry:", error);
+      console.error("Error fetching calendar:", error);
       throw error;
     }
   }

@@ -26,7 +26,7 @@ class CalendarRecordTeamService {
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error("Error fetching leave registry:", error);
+      console.error("Error fetching calendar team:", error);
       throw error;
     }
   }
