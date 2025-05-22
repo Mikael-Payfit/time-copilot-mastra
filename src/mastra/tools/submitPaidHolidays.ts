@@ -82,6 +82,9 @@ Input:
 - endDate: String - The end date of the leave in ISO format (YYYY-MM-DD)
 - endMoment: String - When the leave ends during the day (beginning-of-day, middle-of-day, end-of-day)
 
+WARNING: the moment of day gives the information of when the leave starts or ends during the day, not directly the half-day information.
+If the user does not specify anything about half-days, a leave will start at beginning of day and end at end of day.  
+
 Output:
 - An object containing:
   - leaveRegistryId: The ID of the employee's leave registry
@@ -97,14 +100,14 @@ Output:
       .regex(/^\d{4}-\d{2}-\d{2}$/, "Must be in YYYY-MM-DD format")
       .describe("Start date of the leave in ISO format"),
     beginMoment: z
-      .enum([MomentOfDay.BEGINNING, MomentOfDay.MIDDLE, MomentOfDay.END])
+      .enum([MomentOfDay.BEGINNING, MomentOfDay.MIDDLE])
       .describe("When the leave starts during the day"),
     endDate: z
       .string()
       .regex(/^\d{4}-\d{2}-\d{2}$/, "Must be in YYYY-MM-DD format")
       .describe("End date of the leave in ISO format"),
     endMoment: z
-      .enum([MomentOfDay.BEGINNING, MomentOfDay.MIDDLE, MomentOfDay.END])
+      .enum([MomentOfDay.MIDDLE, MomentOfDay.END])
       .describe("When the leave ends during the day"),
   }),
   outputSchema: z.object({
