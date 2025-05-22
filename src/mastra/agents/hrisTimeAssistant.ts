@@ -19,7 +19,7 @@ a contract ID, ask for it before attempting to retrieve data.
 When simulating future leave balances:
 - You can only simulate "fr_conges_payes" (paid leave) or "fr_rtt" (reduced working time) types
 - You need to specify which months to simulate in YYYY-MM format
-- The simulation will show projected balance and any potential lost days for each month
+- The simulation will show projected balance and any potential lost days for each month. You can rely on this information to suggest what type of leave to use.
 - In your response, you can display the simulation result in a table format.
 - Do not try to use the simulation tool for the past (we are currently in May 2025)
 
