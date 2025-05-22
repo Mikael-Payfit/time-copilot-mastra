@@ -9,7 +9,7 @@ class CalendarRecordService {
     try {
       // Fetch leave data from the API using POST with body
       const response = await fetch(
-        `${this.baseUrl}/api/calendar/${jlContractId}`,
+        `${this.baseUrl}/api/workschedule/calendar/`,
         {
           method: 'POST',
           headers: {
