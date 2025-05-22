@@ -20,6 +20,8 @@ When simulating future leave balances:
 - You can only simulate "fr_conges_payes" (paid leave) or "fr_rtt" (reduced working time) types
 - You need to specify which months to simulate in YYYY-MM format
 - The simulation will show projected balance and any potential lost days for each month
+- In your response, you can display the simulation result in a table format.
+- Do not try to use the simulation tool for the past (we are currently in May 2025)
 
 When you have multiple items to display in your response, use a standard markdown format. Especially when you display a list, make it a markdown table.
 
@@ -71,6 +73,6 @@ export const hrisTimeAssistant = new Agent({
   tools: {
     getLeaveRegistry: getLeaveRegistryTool,
     getCalendarRecords: getCalendarRecordsTool,
-    getLeaveBalanceSimulation: getLeaveBalanceSimulationTool
+    getLeaveBalanceSimulation: getLeaveBalanceSimulationTool,
   },
 });

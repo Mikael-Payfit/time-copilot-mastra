@@ -19,7 +19,7 @@ class LeaveBalanceSimulationService {
       const headers = {
         "Content-Type": "application/json",
         Authorization: process.env.AUTHORIZATION_TOKEN || "",
-        Cookie: process.env.AUTH_EDGE_TOKEN || "",
+        Cookie: `authatedge_dev_token=${process.env.AUTH_EDGE_TOKEN || ""}`,
       };
 
       // Prepare request body
