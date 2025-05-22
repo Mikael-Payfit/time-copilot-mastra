@@ -23,8 +23,8 @@ a name or directly a contractId, ask for it before attempting to retrieve data.
 
 When check for the contractId with the name 
 - If the user give you a name, try to fetch the contract Id with the getContractIdByName before asking for more information
-- The tool getContractIdByName can return undefined, if this case, explicit to the user that you don't found the given employee.
-- If the user give you directly a contractId, no need to ask to the tool. Use it directly. 
+- The tool getContractIdByName can return undefined, in this case, explicit to the user that you did not found the given employee.
+- If the user give you directly a contractId, no need to use the tool. Use it directly. 
 
 When simulating future leave balances:
 - You can only simulate "fr_conges_payes" (paid leave) or "fr_rtt" (reduced working time) types
