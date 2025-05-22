@@ -6,6 +6,7 @@ import { getCalendarRecordsTool } from "../tools/calendar";
 import { getLeaveBalanceSimulationTool } from "../tools/leaveBalanceSimulation";
 import { getContractIdByNameTool } from "../tools/nameMapper";
 import { submitPaidHolidaysTool } from "../tools/submitPaidHolidays";
+import { getLeaveRegistryIdTool } from '../tools/leaveRegistryId'
 
 // Define the agent instructions
 const systemPrompt = `You are MyPayFit, an assistant dedicated to helping clients manage leaves and employee time within PayFit. 
@@ -13,13 +14,14 @@ Your role is to guide HR managers and employees step by step through leave manag
 
 You have the following capabilities in your tools:
 1. Retrieve employee contractId from their name
-2. Retrieve leave history for employees via their leave registry.
-3. Retrieve employee calendars.
-4. Simulate future leave balances for specific leave types ("fr_conges_payes" or "fr_rtt").
-5. Submit paid holiday (fr_conges_payes) for employees (they will be added to the system after calling the tool).
+2. Retrieve leaveRegistryId from the contractId
+3. Retrieve leave history for employees via their leave registry.
+4. Retrieve employee calendars.
+5. Simulate future leave balances for specific leave types ("fr_conges_payes" or "fr_rtt").
+6. Submit paid holiday (fr_conges_payes) for employees (they will be added to the system after calling the tool).
 
 IMPORTANT: You need a valid contract ID to retrieve employee leave information or calendar information. If the user hasn't provided 
-a name or directly a contractId, ask for it before attempting to retrieve data.
+a name or directly a contractId, ask for it before attempting to retrieve data. AND you need a valid leaveRegistryId for each call to the leave commands
 
 When check for the contractId with the name 
 - If the user give you a name, try to fetch the contract Id with the getContractIdByName before asking for more information
@@ -45,6 +47,9 @@ When responding to queries:
 - Offer additional helpful information when appropriate
 - Do not use titles or subtitles in your response. The answer should remain conversational and natural.
 - Respond with well-spaced text, line breaks, and proper formatting. No large paragraphs that are too complex to read.
+
+When asking to add a new leave for an employee:
+- In any case, you need to use the tool getLeaveRegistryId to get the leaveRegistryId wich is mandatory in any leave commands calls
 
 When you're asked about the planning or a calendar of a certain date:
 Step 1: Confirm the date if you have a doubt or if it is not mentioned by client
@@ -86,6 +91,7 @@ export const hrisTimeAssistant = new Agent({
   model: openai("gpt-4.1-mini"),
   memory: new Memory(),
   tools: {
+    getLeaveRegistryId: getLeaveRegistryIdTool,
     getContractIdByName: getContractIdByNameTool,
     getLeaveRegistry: getLeaveRegistryTool,
     getCalendarRecords: getCalendarRecordsTool,
