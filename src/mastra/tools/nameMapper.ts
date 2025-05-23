@@ -21,8 +21,8 @@ export const getContractIdByNameTool = createTool({
     if (context.name.toLowerCase().indexOf('benedic') !== -1 || context.name.toLowerCase().indexOf('timebottom') !== -1) {
       return { contractId: '682f2e8590ecf695ae96f51e', realName: 'Benedic Timebottom' }
     }
-    if (context.name.toLowerCase().indexOf('agatha') !== -1 || context.name.toLowerCase().indexOf('clockberry') !== -1) {
-      return { contractId: '682f2b9790ecf695ae96f4e7', realName: 'Agatha Clockberry' }
+    if (context.name.toLowerCase().indexOf('agatha') !== -1 || context.name.toLowerCase().indexOf('shiftberry') !== -1) {
+      return { contractId: '682f2b9790ecf695ae96f4e7', realName: 'Agatha Shiftberry' }
     }
     return { contractId: undefined, realName: undefined }
   },
